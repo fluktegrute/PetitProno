@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.match-flag{
+	margin: 0 10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+.match-team{
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+.match-date{
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+
+.match-stage{
+	font-size: 1.1rem;
+	font-weight: 400;
+}
+
+.input-prono{
+	width: 100px;
+	text-align: center;
+}
+
+.staging-table{
+	width: 100%;
+	text-align: center;
+	border: 1px solid #eee;
+}
+
+.staging-table tr:nth-child(even){
+	background-color: #f5f5f5;
+}
+
+.staging-head{
+	font-weight: 900;
+	font-size: 1.3rem;
+}
+
+.league-table{
+	width: 100%;
+	text-align: center;
+	border: 1px solid #eee;
+}
+
+.league-table tr:nth-child(even){
+	background-color: #f5f5f5;
+}
+
+.league-table > tbody > tr:nth-child(1){
+	background-color: #FFD70060;
+	height: 100px;
+	font-size: 1.2em;
+}
+
+.league-table > tbody > tr:nth-child(2){
+	background-color: #C0C0C060;
+	height: 90px;
+	font-size: 1.2em;
+}
+
+.league-table > tbody > tr:nth-child(3){
+	background-color: #CD7F3260;
+	height: 80px;
+	font-size: 1.2em;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.prono-lost{
+	color: #ff2424;
+	background-color: #ffdddd;
+	border-radius: 10px;
+}
+
+.prono-won, .prono-exact{
+	color: #00cb00;
+	background-color: #ddffdd;
+	border-radius: 10px;
+}
