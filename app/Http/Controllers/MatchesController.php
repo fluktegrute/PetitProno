@@ -25,14 +25,14 @@ class MatchesController extends Controller
 
 	public function update(Request $request){
 		HelpController::checkToken($request->input('token'));
-		
+
 		$all_matches = $this->api->call('matches');
 		foreach ($all_matches->matches as $api_match) {
 			if(!is_null($api_match->homeTeam->id) && !is_null($api_match->awayTeam->id)){
 				$match = ECMatch::where('api_id', $api_match->id)->first();
 				if(is_null($match)){
 					$dt = new \DateTime($api_match->utcDate, new \DateTimeZone('UTC'));
-					$dt->setTimezone(new \DateTimeZone('Europe/Paris'));
+					$dt->setTimezone(new \DateTimeZone(config('app.app_timezone')));
 
 					$match = new ECMatch;
 					$match->api_id = $api_match->id;

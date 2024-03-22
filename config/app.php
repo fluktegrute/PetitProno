@@ -188,4 +188,6 @@ return [
     'api_key' => env('API_KEY', 'API_KEY'),
 
     'update_token' => env('UPDATE_TOKEN', 'UPDATE_TOKEN'),
+
+    'app_timezone' => env('APP_TIMEZONE', 'Europe/Paris'),
 ];
