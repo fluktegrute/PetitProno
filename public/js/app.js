@@ -21,7 +21,9 @@ jQuery('document').ready(function($){
 	            },
 
 	            success: function(data){
-	            	console.log(data);
+	            	var tmp = data.split('|');
+	            	if(tmp[0] == 'triche')
+	            		alert("C'est pas beau de tricher, tu perds "+tmp[1]+" points :p");
 	            }
 	        });
 		});
@@ -58,5 +60,18 @@ jQuery('document').ready(function($){
 		});
 	});
 
+	$("#played").hide();
 
+	$(".played").on('click', function(){
+		$("#played").show();
+		$("#played").addClass('active');
+		$("#to-be-played").removeClass('active');
+		$("#to-be-played").hide();
+	});
+	$(".to-be-played").on('click', function(){
+		$("#played").hide();
+		$("#to-be-played").show();
+		$("#played").removeClass('active');
+		$("#to-be-played").addClass('active');
+	});
 });

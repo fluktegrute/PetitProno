@@ -25,7 +25,10 @@ class PronoController extends Controller
 
 		$match = ECMatch::find($request->match_id);
 		if(strtotime($match->date) < strtotime('now')){
-			echo ('triche');
+			$user = User::find($user_id);
+			$user->total_points -= config('app.cheating_points_to_remove');
+			$user->save();
+			echo ('triche|'.config('app.cheating_points_to_remove'));
 			die();
 		}
 
@@ -55,12 +58,6 @@ class PronoController extends Controller
 					->where('match_id', $request->match_id)
 					->first();
 
-		$match = ECMatch::find($request->match_id);
-		if(strtotime($match->date) < strtotime('now')){
-			echo ('triche');
-			die();
-		}
-
 		$user = User::find($user_id);
 
 		if(!$prono){
@@ -72,7 +69,7 @@ class PronoController extends Controller
 		$booster_used = $request->booster == "true" ? 1 : 0;
 		$user_boosters = Prono::where('user_id', $user_id)->where('booster_used', 1)->count();
 
-		if(($booster_used && $user_boosters < 3) || !$booster_used) {
+		if(($booster_used && $user_boosters < config('app.initial_booster_number')) || !$booster_used) {
 			$prono->booster_used = $booster_used;
 			$prono->home_team_goals = $prono->home_team_goals ?? 0;
 			$prono->away_team_goals = $prono->away_team_goals ?? 0;
@@ -80,7 +77,7 @@ class PronoController extends Controller
 			echo 'ok';
 			die();
 		}
-		elseif ($booster_used && $user_boosters >= 3) {
+		elseif ($booster_used && $user_boosters >= config('app.initial_booster_number')) {
 			echo 'no_more_boosters';
 			die();
 		}
@@ -96,7 +93,7 @@ class PronoController extends Controller
 				$prono->is_counted = 1;
 				$prono->save();
 
-				$user->total_points += (1 + $prono->booster_used) * 30;
+				$user->total_points += $prono->booster_used ? config('app.booster_multiplier') * config('app.exact_score_points') : config('app.exact_score_points');
 				$user->save();
 			}
 			elseif(
@@ -112,7 +109,7 @@ class PronoController extends Controller
 				$prono->is_counted = 1;
 				$prono->save();
 
-				$user->total_points += (1 + $prono->booster_used) * 10;
+				$user->total_points += $prono->booster_used ? config('app.booster_multiplier') * config('app.winning_prono_points') : config('app.winning_prono_points');
 				$user->save();
 			}
 			else{
@@ -126,7 +123,7 @@ class PronoController extends Controller
 		if($winner){
 			$users_with_correct_winner = User::where('prono_winner', $winner->id)->where('bonus_given', 0)->get();
 			foreach ($users_with_correct_winner as $user_with_correct_winner) {
-				$user_with_correct_winner->total_points += 50;
+				$user_with_correct_winner->total_points += config('app.winner_prono_points');
 				$user_with_correct_winner->bonus_given = 1;
 				$user_with_correct_winner->save();
 			}

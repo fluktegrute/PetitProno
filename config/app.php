@@ -190,4 +190,11 @@ return [
     'update_token' => env('UPDATE_TOKEN', 'UPDATE_TOKEN'),
 
     'app_timezone' => env('APP_TIMEZONE', 'Europe/Paris'),
+
+    'exact_score_points' => env('EXACT_SCORE_POINTS', 30),
+    'winning_prono_points' => env('WINNING_PRONO_POINTS', 10),
+    'winner_prono_points' => env('WINNER_PRONO_POINTS', 50),
+    'booster_multiplier' => env('BOOSTER_MULTIPLIER', 2),
+    'initial_booster_number' => env('INITIAL_BOOSTER_NUMBER', 3),
+    'cheating_points_to_remove' => env('CHEATING_POINTS_TO_REMOVE', 20),
 ];

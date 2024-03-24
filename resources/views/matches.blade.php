@@ -10,9 +10,80 @@
             Tu n'as pas encore choisi ton vainqueur, va le faire sur la page de <a href="/profile">ton profil !</a>
         </div>
     @endif
-    
-    <div class="py-12">
+    <div class="py-2 text-center mx-auto">
+        <ul class="flex inline-flex text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 mx-auto">
+            <li class="me-2">
+                <a href="#" aria-current="page" class="to-be-played inline-block p-4 text-blue-600 bg-gray-100 rounded-t-lg active dark:bg-gray-800 dark:text-blue-500">À venir</a>
+            </li>
+            <li class="me-2">
+                <a href="#" class="played inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Passés</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="py-12" id="to-be-played">
         @foreach($matches as $match)
+            @php if(!$match['is_available']) continue; @endphp
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-10">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 text-gray-900 dark:text-gray-100">
+                        <p class="bg-gray-200 text-gray-800 py-5 text-center rounded-xl mb-5">
+                            <span class="match-date">{{ $match['date'] }}</span>
+                            <br>
+                            <span class="match-stage">{{ "{$match['stage']} - {$match['group']}" }}</span>
+                        </p>
+                        <br>
+                        <div class="grid grid-cols-5 gap-4">
+                            <div class="col-span-2 mx-auto my-0">
+                                <div class="flex flex-nowrap items-center">
+                                    <img class="inline match-flag" src="{{$match['home_team']['flag']}}" width="64px"> 
+                                    <span class="match-team">{{ $match['home_team']['name'] }}</span> 
+                                </div>
+                                <div class="my-2 text-center">
+                                    <input type="number" class="input-prono bg-gray-50 border border-gray-300 text-gray-900 rounded-lg text-right w-1/3" data-match="{{$match['id']}}" data-equipe="home" value="{{ $match['home_team']['prono'] }}" {{ !$match['is_available'] ? 'disabled' : '' }}>
+                                </div>
+                            </div>
+                            <div class="my-auto mx-auto"><p class="text-s"><strong>VS</strong></p></div>
+                            <div class="col-span-2 mx-auto my-0">
+                                <div class="flex flex-nowrap items-center">
+                                    <span class="match-team">{{ $match['away_team']['name'] }}</span> 
+                                    <img class="inline match-flag" src="{{$match['away_team']['flag']}}" width="64px"> 
+                                </div>
+                                <div class="my-2 text-center">
+                                    <input type="number" class="input-prono bg-gray-50 border border-gray-300 text-gray-900 rounded-lg text-right w-1/3" data-match="{{$match['id']}}" data-equipe="away" value="{{ $match['away_team']['prono'] }}" {{ !$match['is_available'] ? 'disabled' : '' }}>
+                                </div>
+                            </div>
+                            @if($match['is_available'])
+                            <div class="col-span-5 mx-auto my-0">
+                                <input type="checkbox" class="chbx-prono" data-match="{{$match['id']}}" id="booster-{{$match['id']}}" {{$match['prono_booster'] ? 'checked' : ''}}>
+                                <label for="booster-{{$match['id']}}">Utiliser un booster sur ce match</label>
+                            </div>
+                            @endif
+                        </div>
+                        @if(!$match['is_available'])
+                        <div class="flex flex-nowrap items-center py-2 my-2 {{ $match['prono_result'] == 2 ? 'prono-exact' : ($match['prono_result'] == 1 ? 'prono-won' : 'prono-lost') }}">
+                            <div class="mx-auto my-0">
+                                <div class="flex flex-nowrap items-center">
+                                    {{ $match['home_team']['score'] }}
+                                </div>
+                            </div>
+                            <div class="text-center mx-auto">{!! $match['prono_result'] == 2 ? "Perfect, bien ouèj !&nbsp;&#129395;" : ($match['prono_result'] == 1 ? "Gagné&nbsp;&#128526;" : "Dommage... &nbsp;&#128533;") !!}</div>
+                            <div class="mx-auto my-0">
+                                <div class="flex flex-nowrap items-center">
+                                    {{ $match['away_team']['score'] }}
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
+    <div class="py-12" id="played">
+        @foreach($matches as $match)
+            @php if($match['is_available']) continue; @endphp
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-10">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
