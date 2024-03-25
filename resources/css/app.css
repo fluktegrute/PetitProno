@@ -92,3 +92,7 @@ input[type=number] {
 	background-color: #ddffdd;
 	border-radius: 10px;
 }
+
+.active{
+	color: rgb(37 99 235);
+}

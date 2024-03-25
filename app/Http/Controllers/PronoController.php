@@ -69,7 +69,7 @@ class PronoController extends Controller
 		$booster_used = $request->booster == "true" ? 1 : 0;
 		$user_boosters = Prono::where('user_id', $user_id)->where('booster_used', 1)->count();
 
-		if(($booster_used && $user_boosters < config('app.initial_booster_number')) || !$booster_used) {
+		if(($booster_used && $user_boosters < config('app.initial_booster_quantity')) || !$booster_used) {
 			$prono->booster_used = $booster_used;
 			$prono->home_team_goals = $prono->home_team_goals ?? 0;
 			$prono->away_team_goals = $prono->away_team_goals ?? 0;
@@ -77,7 +77,7 @@ class PronoController extends Controller
 			echo 'ok';
 			die();
 		}
-		elseif ($booster_used && $user_boosters >= config('app.initial_booster_number')) {
+		elseif ($booster_used && $user_boosters >= config('app.initial_booster_quantity')) {
 			echo 'no_more_boosters';
 			die();
 		}

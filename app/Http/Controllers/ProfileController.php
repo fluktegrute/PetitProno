@@ -25,7 +25,7 @@ class ProfileController extends Controller
         if(is_null($request->user()->prono_winner)) {
             $teams = Team::all();
             $teams = $teams->sortBy(function($team) {
-                $team->name = HelpController::equipe($team->name);
+                $team->name = $team->name();
                 return $team->name;
             });
         }
@@ -36,7 +36,7 @@ class ProfileController extends Controller
         return view('profile.edit', [
             'user' => $request->user(),
             'teams' => $teams,
-            'has_winner' => $has_winner ? HelpController::equipe($has_winner->name) : null,
+            'has_winner' => $has_winner ? $has_winner->name() : null,
         ]);
     }
 

@@ -11,9 +11,9 @@
         </div>
     @endif
     <div class="py-2 text-center mx-auto">
-        <ul class="flex inline-flex text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 mx-auto">
+        <ul class="flex inline-flex text-lg font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 mx-auto">
             <li class="me-2">
-                <a href="#" aria-current="page" class="to-be-played inline-block p-4 text-blue-600 bg-gray-100 rounded-t-lg active dark:bg-gray-800 dark:text-blue-500">À venir</a>
+                <a href="#" class="to-be-played inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300 active">À venir</a>
             </li>
             <li class="me-2">
                 <a href="#" class="played inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Passés</a>

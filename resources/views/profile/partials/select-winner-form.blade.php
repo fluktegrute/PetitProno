@@ -8,7 +8,7 @@
     @if($teams)
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
             Tu peux choisir l'équipe qui, selon toi, va gagner l'Euro.<br>
-            Si ton prono s'avère exact, ça te rapportera <b>50 points</b> en fin de compétition.<br>
+            Si ton prono s'avère exact, ça te rapportera <b>{{ config('app.winner_prono_points') }} points</b> en fin de compétition.<br>
             <span class="text-red-500 font-bold">Attention : une fois ton vainqueur sélectionné, tu ne pourras pas revenir en arrière !
         </p>
 
@@ -42,7 +42,7 @@
     @else
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
             Ton poney gagnant : <span class="text-cyan-500 font-bold">{{$has_winner}}</span><br>
-            Si ton prono s'avère exact, ça te rapportera <b>50 points</b> en fin de compétition.
+            Si ton prono s'avère exact, ça te rapportera <b>{{ config('app.winner_prono_points') }} points</b> en fin de compétition.
         </p>
     @endif
 </section>

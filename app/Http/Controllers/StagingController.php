@@ -21,7 +21,7 @@ class StagingController extends Controller
 			foreach ($all_teams as $team) {
 				if($team->group == "Group $group"){
 					$groups[$group][] = [
-						'name' => HelpController::equipe($team->name),
+						'name' => $team->name(),
 						'flag' => $team->flag,
 						'played' => $team->played,
 						'won' => $team->won,

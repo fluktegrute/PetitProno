@@ -25,7 +25,6 @@ class MatchesController extends Controller
 
 	public function update(Request $request){
 		HelpController::checkToken($request->input('token'));
-
 		$all_matches = $this->api->call('matches');
 		foreach ($all_matches->matches as $api_match) {
 			if(!is_null($api_match->homeTeam->id) && !is_null($api_match->awayTeam->id)){
@@ -84,18 +83,18 @@ class MatchesController extends Controller
 			$away_team = Team::where('api_id', $match->away_team)->first();
 			$matches[] = [
 				'id' => $match->id,
-				'stage' => HelpController::stage($match->stage),
-				'group' => HelpController::groupe($match->group),
+				'stage' => $match->stage(),
+				'group' => $match->group(),
 				'home_team' => [
 					'id' => $match->home_team,
-					'name' => HelpController::equipe($home_team->name),
+					'name' => $home_team->name(),
 					'score' => $match->home_goals,
 					'flag' => $home_team->flag,
 					'prono' => $prono->home_team_goals ?? '',
 				],
 				'away_team' => [
 					'id' => $match->away_team,
-					'name' => HelpController::equipe($away_team->name),
+					'name' => $away_team->name(),
 					'score' => $match->away_goals,
 					'flag' => $away_team->flag,
 					'prono' => $prono->away_team_goals ?? '',

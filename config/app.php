@@ -195,6 +195,6 @@ return [
     'winning_prono_points' => env('WINNING_PRONO_POINTS', 10),
     'winner_prono_points' => env('WINNER_PRONO_POINTS', 50),
     'booster_multiplier' => env('BOOSTER_MULTIPLIER', 2),
-    'initial_booster_number' => env('INITIAL_BOOSTER_NUMBER', 3),
-    'cheating_points_to_remove' => env('CHEATING_POINTS_TO_REMOVE', 20),
+    'initial_booster_quantity' => env('INITIAL_BOOSTER_QUANTITY', 3),
+    'cheating_points_to_remove' => env('CHEATING_POINTS_TO_REMOVE', 15),
 ];

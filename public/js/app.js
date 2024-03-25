@@ -64,14 +64,14 @@ jQuery('document').ready(function($){
 
 	$(".played").on('click', function(){
 		$("#played").show();
-		$("#played").addClass('active');
-		$("#to-be-played").removeClass('active');
+		$(".played").addClass('active');
+		$(".to-be-played").removeClass('active');
 		$("#to-be-played").hide();
 	});
 	$(".to-be-played").on('click', function(){
 		$("#played").hide();
 		$("#to-be-played").show();
-		$("#played").removeClass('active');
-		$("#to-be-played").addClass('active');
+		$(".played").removeClass('active');
+		$(".to-be-played").addClass('active');
 	});
 });
