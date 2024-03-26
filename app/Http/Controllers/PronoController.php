@@ -97,12 +97,9 @@ class PronoController extends Controller
 				$user->save();
 			}
 			elseif(
-				($prono->home_team_goals > $prono->away_team_goals
-				&& $match->home_goals > $match->away_goals)
-				|| ($prono->home_team_goals < $prono->away_team_goals
-				&& $match->home_goals < $match->away_goals)
-				|| ($prono->home_team_goals == $prono->away_team_goals
-				&& $match->home_goals == $match->away_goals)
+				($prono->home_team_goals > $prono->away_team_goals && $match->home_goals > $match->away_goals) ||
+				($prono->home_team_goals < $prono->away_team_goals && $match->home_goals < $match->away_goals) ||
+				($prono->home_team_goals == $prono->away_team_goals && $match->home_goals == $match->away_goals)
 			){
 				$prono->is_exact = 0;
 				$prono->is_won = 1;

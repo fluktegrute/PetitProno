@@ -30,7 +30,7 @@
                         <p class="bg-gray-200 text-gray-800 py-5 text-center rounded-xl mb-5">
                             <span class="match-date">{{ $match['date'] }}</span>
                             <br>
-                            <span class="match-stage">{{ "{$match['stage']} - {$match['group']}" }}</span>
+                            <span class="match-stage">{{ $match['stage'] }}{{ $match['group'] ? " - {$match['group']}" : "" }}</span>
                         </p>
                         <br>
                         <div class="grid grid-cols-5 gap-4">

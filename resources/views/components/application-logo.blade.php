@@ -1,4 +1,4 @@
-<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" {{ $attributes }}>
+{{-- <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" {{ $attributes }}>
   <g id="Groupe_3" data-name="Groupe 3" transform="translate(-162.885 -471.264)">
     <path id="Tracé_1" data-name="Tracé 1" d="M162.885,471.264v63.458h17.286v-7.7h-8.308V478.959h8.308v-7.7Z" transform="translate(0 0)" fill="#e93e38"/>
     <g id="Groupe_2" data-name="Groupe 2" transform="translate(182.893 480.951)">
@@ -8,4 +8,5 @@
     </g>
     <path id="Tracé_3" data-name="Tracé 3" d="M369.072,471.264v7.7h8.309v48.068h-8.309v7.7h17.286V471.264Z" transform="translate(-148.473 0)" fill="#e93e38"/>
   </g>
-</svg>
+</svg> --}}
+<img src="{{ asset('img/logo.png') }}" width="64px" />

@@ -13,21 +13,21 @@
                         <p class="staging-head">{{ "Groupe $group" }}</p>
                         <table class="staging-table mt-5">
                             <thead class="bg-gray-300">
-                                <th class="my-2 py-2" style="width: 35%">Pays</th>
-                                <th class="my-2 py-2" style="width: 16%">Pts</th>
-                                <th class="my-2 py-2" style="width: 7%">J</th>
-                                <th class="my-2 py-2" style="width: 7%">V</th>
-                                <th class="my-2 py-2" style="width: 7%">N</th>
-                                <th class="my-2 py-2" style="width: 7%">D</th>
-                                <th class="my-2 py-2" style="width: 7%">BP</th>
-                                <th class="my-2 py-2" style="width: 7%">BC</th>
-                                <th class="my-2 py-2" style="width: 7%">Diff</th>
+                                <th class="my-2 py-2 staging-table-pays">Pays</th>
+                                <th class="my-2 py-2 staging-table-pts">Pts</th>
+                                <th class="my-2 py-2 staging-table-th">J</th>
+                                <th class="my-2 py-2 staging-table-th">V</th>
+                                <th class="my-2 py-2 staging-table-th">N</th>
+                                <th class="my-2 py-2 staging-table-th">D</th>
+                                <th class="my-2 py-2 staging-table-th">BP</th>
+                                <th class="my-2 py-2 staging-table-th">BC</th>
+                                <th class="my-2 py-2 staging-table-th">Diff</th>
                             </thead>
                             <tbody>
                             @foreach($teams as $team)
                                 <tr class="my-2 py-5">
                                     <td class="my-2 py-2 inline-flex items-center">
-                                        <img class="match-flag" src="{{$team['flag']}}" width="40px">
+                                        <img class="staging-flag" src="{{$team['flag']}}" width="40px">
                                         <span>{{$team['name']}}</span>
                                     </td>
                                     <td class="my-2 py-2">{{$team['points']}}</td>

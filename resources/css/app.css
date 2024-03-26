@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.match-flag{
+.match-flag, .staging-flag{
 	margin: 0 10px;
 	border: 1px solid #ddd;
 	border-radius: 5px;
@@ -32,6 +32,18 @@
 	width: 100%;
 	text-align: center;
 	border: 1px solid #eee;
+}
+
+.staging-table-pays{
+	width: 35%;
+}
+
+.staging-table-pts{
+	width: 16%;
+}
+
+.staging-table-th{
+	width: 7%;
 }
 
 .staging-table tr:nth-child(even){
@@ -95,4 +107,53 @@ input[type=number] {
 
 .active{
 	color: rgb(37 99 235);
+}
+
+@media screen and (max-width: 640px){
+	.staging-head{
+		font-weight: 900;
+		font-size: 1rem;
+	}
+
+	.staging-table-pays{
+		width: 30%;
+	}
+
+	.staging-table-pts{
+		width: 14%;
+	}
+
+	.staging-table-th{
+		width: 8%;
+	}
+
+	.staging-table td, th{
+		font-size: 0.8em;
+	}
+
+	.staging-flag{
+		display: none;
+	}
+
+	.match-flag{
+		max-width: 25px;
+	}
+
+	.league-table > tbody > tr:nth-child(1){
+		background-color: #FFD70060;
+		height: 100px;
+		font-size: 1em;
+	}
+
+	.league-table > tbody > tr:nth-child(2){
+		background-color: #C0C0C060;
+		height: 90px;
+		font-size: 1em;
+	}
+
+	.league-table > tbody > tr:nth-child(3){
+		background-color: #CD7F3260;
+		height: 80px;
+		font-size: 1em;
+	}
 }
