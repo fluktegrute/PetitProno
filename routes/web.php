@@ -34,7 +34,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('update-winner', [PronoController::class, 'setWinner'])->name('winner.update');
 
     Route::get('staging', [StagingController::class, 'index'])->name('staging');
-    Route::get('league', [LeagueController::class, 'index'])->name('league');
+    Route::get('league/{id?}', [LeagueController::class, 'index'])->name('league');
+
+    Route::post('league-create', [LeagueController::class, 'create'])->name('league.create');
 
     Route::post('set-prono', [PronoController::class, 'setScore'])->name('set-prono');
     Route::post('set-booster', [PronoController::class, 'setBooster'])->name('set-booster');

@@ -7,7 +7,7 @@
 
     @if(!$hasWinner)
         <div class="py-1/2 text-center bg-orange-300">
-            Tu n'as pas encore choisi ton vainqueur, va le faire sur la page de <a href="/profile">ton profil !</a>
+            Tu n'as pas encore choisi ton poney, va le faire sur la page de <a href="/profile" class="profile-link">ton profil !</a>
         </div>
     @endif
     <div class="py-2 text-center mx-auto">

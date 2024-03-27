@@ -1,8 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Ligue marque[DIGITALE]') }}
+            Ligue {{ $leagueName }}
         </h2>
+        @if($creator)
+            <span class="league-creator text-gray-500 text-xs mx-5">by {{$creator}}</span>
+        @endif
     </x-slot>
 
     <div class="py-12">

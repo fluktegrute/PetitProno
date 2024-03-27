@@ -109,6 +109,10 @@ input[type=number] {
 	color: rgb(37 99 235);
 }
 
+.profile-link{
+	text-decoration: underline;
+}
+
 @media screen and (max-width: 640px){
 	.staging-head{
 		font-weight: 900;

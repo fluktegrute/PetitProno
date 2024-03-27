@@ -19,7 +19,7 @@
                         {{ __('Classements') }}
                     </x-nav-link>
                     <x-nav-link :href="route('league')" :active="request()->routeIs('league')">
-                        {{ __('MD League') }}
+                        {{ __('Ligue') }}
                     </x-nav-link>
                 </div>
             </div>
