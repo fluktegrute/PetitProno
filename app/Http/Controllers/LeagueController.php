@@ -17,15 +17,15 @@ use Response;
 class LeagueController extends Controller
 {
 	public function index($id = 0){
-		$league = League::find($id);
-		if($league){
+		$requested_league = League::find($id);
+		if($requested_league){
 
 			$user_in_league = UserLeague::where('league_id', $id)->where('user_id', auth()->user()->id)->first();
 			if(!$user_in_league)
 				return view('md-league')->withError(true);
 
-			$league_name = $league->name;
-			$creator = User::find($league->created_by);
+			$league_name = $requested_league->name;
+			$creator = User::find($requested_league->created_by);
 			$creator_name = $creator->name;
 
 			$user_leagues = UserLeague::where('league_id', $id)->get();
