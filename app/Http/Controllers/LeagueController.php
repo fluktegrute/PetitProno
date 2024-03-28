@@ -19,6 +19,11 @@ class LeagueController extends Controller
 	public function index($id = 0){
 		$league = League::find($id);
 		if($league){
+
+			$user_in_league = UserLeague::where('league_id', $id)->where('user_id', auth()->user()->id)->first();
+			if(!$user_in_league)
+				return view('md-league')->withError(true);
+
 			$league_name = $league->name;
 			$creator = User::find($league->created_by);
 			$creator_name = $creator->name;
@@ -51,7 +56,7 @@ class LeagueController extends Controller
 			return $item['score'];
 		});
 
-		return view('md-league')->withLeague($league)->withLeagueName($league_name)->withCreator($creator_name);
+		return view('md-league')->withLeague($league)->withLeagueName($league_name)->withCreator($creator_name)->withError(false);
 	}
 
 	public function create(Request $request){
@@ -67,5 +72,22 @@ class LeagueController extends Controller
 		$user_league->save();
 
 		return Redirect::route('profile.edit')->with('status', 'league-created');
+	}
+
+	public function join(Request $request){
+		$user_id = auth()->user()->id;
+
+		$user_league = UserLeague::where('user_id', $user_id)->where('league_id', $request->league_id)->first();
+		
+		if($user_league){
+			return Redirect::route('profile.edit')->with('status', 'already-joined');
+		}
+
+		$user_league = new UserLeague;
+		$user_league->league_id = $request->league_id;
+		$user_league->user_id = $user_id;
+		$user_league->save();
+
+		return Redirect::route('profile.edit')->with('status', 'league-joined');
 	}
 }

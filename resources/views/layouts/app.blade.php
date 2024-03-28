@@ -17,7 +17,15 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
+            @php
+                $user_id = auth()->user()->id;
+                $userleagues = \App\Models\UserLeague::where('user_id', $user_id)->get();
+                $leagues = [];
+                foreach($userleagues as $userleague){
+                    $leagues[] = \App\Models\League::find($userleague->league_id);
+                }
+            @endphp
+            @include('layouts.navigation', ['leagues' => $leagues])
 
             <!-- Page Heading -->
             @if (isset($header))

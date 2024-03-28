@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::get('league/{id?}', [LeagueController::class, 'index'])->name('league');
 
     Route::post('league-create', [LeagueController::class, 'create'])->name('league.create');
+    Route::post('league-join', [LeagueController::class, 'join'])->name('league.join');
 
     Route::post('set-prono', [PronoController::class, 'setScore'])->name('set-prono');
     Route::post('set-booster', [PronoController::class, 'setBooster'])->name('set-booster');
