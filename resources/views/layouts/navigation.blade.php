@@ -16,7 +16,7 @@
                         {{ __('Matches') }}
                     </x-nav-link>
                     <x-nav-link :href="route('staging')" :active="request()->routeIs('staging')">
-                        {{ __('Classement des équipes') }}
+                        {{ __('Classement des poneys') }}
                     </x-nav-link>
                     <x-dropdown-menu :active="request()->routeIs('league')">
                         <x-slot name="trigger">
@@ -97,11 +97,22 @@
                 {{ __('Matches') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('staging')" :active="request()->routeIs('staging')">
-                {{ __('Classements') }}
+                {{ __('Classement des poneys') }}
             </x-responsive-nav-link>
+            
+            <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
+                <div class="px-4">
+                    <div class="font-medium text-base text-gray-800 dark:text-gray-200">Mes ligues</div>
+                </div>
+            </div>
             <x-responsive-nav-link :href="route('league')" :active="request()->routeIs('league')">
-                {{ __('MD League') }}
+                Classement général
             </x-responsive-nav-link>
+            @foreach($leagues as $league)
+                <x-responsive-nav-link :href="route('league', ['id' => $league->id])">
+                    {{ $league->name }}
+                </x-responsive-nav-link>
+            @endforeach
         </div>
 
         <!-- Responsive Settings Options -->
