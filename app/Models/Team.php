@@ -33,6 +33,9 @@ class Team extends Model
             'Netherlands' => 'Pays-Bas',
             'Turkey' => 'Turquie',
             'Romania' => 'Roumanie',
+            'Georgia' => 'Géorgie', 
+            'Poland' => 'Pologne',
+            'Ukraine' => 'Ukraine',
         ];
 
     /**
