@@ -2,7 +2,7 @@
 
 Petit Prono est un outil qui permet de jouer à faire des pronos sur l'Euro 2024 de football.<br><br>
 L'idée vient de "Mon Petit Gazon" (props to them) qui avait lancé une appli du même genre pour l'Euro 2020 mais, entre temps, celle-ci est devenue une usine à gaz et a perdu de sa simplicité/convivialité (AMHA).<br><br>
-J'ai donc recréé une sorte de "MonPetitProno" tel qu'il était (à peu près) à l'époque, histoire d'y rejouer avec des collègues.<br>
+J'ai donc recréé une sorte de "Mon Petit Prono" tel qu'il était (à peu près) à l'époque, histoire d'y rejouer avec des collègues.<br>
 
 ## Prérequis
 
@@ -11,16 +11,17 @@ Les équipes/matches/résultats sont issus et actualisés à partir des API de *
 ## Fonctionnement
 
 ### Jeu de base
-Chaque joueur peut pronostiquer le résultat d'un match et choisir de jouer un de ses boosters sur ce match. Il ne peut le faire qu'avant le début du match (une tentative de création/modification de prono après le début du match associé entraine une pénalité pour tentatvie de tricherie).<br>
-Si son prono est bon, il gagne des points en fonction du résultat du match (il recevra plus de points pour un score exact), sinon il ne gagne pas de points.<br>
+Chaque joueur peut pronostiquer le résultat d'un match et choisir de jouer un de ses boosters sur ce match. <br>
+Il ne peut le faire qu'avant le début du match (une tentative de création/modification de prono après le début du match associé entraine une pénalité pour tentatvie de tricherie).<br><br>
+Si son prono est bon, il gagne des points en fonction du résultat du match (il recevra plus de points pour un score exact), sinon il ne gagne pas de points.<br><br>
 S'il a joué un booster, son score pour le match est multiplié par le multiplicateur.
 
 ### Ligues
-Par défaut, chaque joueur fait partie du "classement général" qui regroupe tous les joueurs inscrits.<br>
-Un joueur peut créer des ligues qui vont regrouper les joueurs qui les rejoignent. Le score d'un joueur dans une ligue est le même que dans le classement général.<br>
+Par défaut, chaque joueur fait partie du "classement général" qui regroupe tous les joueurs inscrits.<br><br>
+Un joueur peut créer des ligues qui vont regrouper les joueurs qui les rejoignent. Le score d'un joueur dans une ligue est le même que dans le classement général, seuls les "adversaires" sont limités aux participants de la ligue.<br>
 
 ### Actualisations
-Il existe 2 routes permettant de mettre à jour l'appli depuis Football Data (sous réserve d'avoir fourni une clé API dans la variable d'environnement **API_KEY**)
+Il existe 2 routes permettant de mettre à jour l'appli depuis Football Data (sous réserve d'avoir fourni une clé API dans la variable d'environnement **API_KEY**) :
 - ***update-teams*** : pour actualiser les équipes et leur classement en poule
 - ***update-matches*** : pour actualiser les matches et leur résultat, ainsi qu'attribuer les points aux joueurs suite à leurs pronos
 
