@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Matches') }}
         </h2>
     </x-slot>
@@ -11,12 +11,12 @@
         </div>
     @endif
     <div class="py-2 text-center mx-auto">
-        <ul class="flex inline-flex text-lg font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 mx-auto">
+        <ul class="flex inline-flex text-lg font-medium text-center text-gray-500 border-b border-gray-200 mx-auto">
             <li class="me-2">
-                <a href="#" class="to-be-played inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300 active">À venir</a>
+                <a href="#" class="to-be-played inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 active">À venir</a>
             </li>
             <li class="me-2">
-                <a href="#" class="played inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Passés</a>
+                <a href="#" class="played inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50">Passés</a>
             </li>
         </ul>
     </div>
@@ -25,8 +25,8 @@
         @foreach($matches as $match)
             @php if(!$match['is_available']) continue; @endphp
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-10">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900 dark:text-gray-100">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 text-gray-900">
                         <p class="bg-gray-200 text-gray-800 py-5 text-center rounded-xl mb-5">
                             <span class="match-date">{{ $match['date'] }}</span>
                             <br>
@@ -85,8 +85,8 @@
         @foreach($matches as $match)
             @php if($match['is_available']) continue; @endphp
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-10">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900 dark:text-gray-100">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 text-gray-900">
                         <p class="bg-gray-200 text-gray-800 py-5 text-center rounded-xl mb-5">
                             <span class="match-date">{{ $match['date'] }}</span>
                             <br>

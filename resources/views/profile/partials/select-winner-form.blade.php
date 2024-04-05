@@ -1,12 +1,12 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+        <h2 class="text-lg font-medium text-gray-900">
             {{ __('Qui va gagner ?') }}
         </h2>
     </header>
 
     @if($teams)
-        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+        <p class="mt-1 text-sm text-gray-600">
             Tu peux choisir l'équipe qui, selon toi, va gagner l'Euro.<br>
             Si ton prono s'avère exact, ça te rapportera <b>{{ config('app.winner_prono_points') }} points</b> en fin de compétition.<br>
             <span class="text-red-500 font-bold">Attention : une fois ton poney sélectionné, tu ne pourras pas revenir en arrière !
@@ -34,13 +34,13 @@
                         x-show="show"
                         x-transition
                         x-init="setTimeout(() => show = false, 2000)"
-                        class="text-sm text-gray-600 dark:text-gray-400"
+                        class="text-sm text-gray-600"
                     >{{ __('Enregistré.') }}</p>
                 @endif
             </div>
         </form>
     @else
-        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+        <p class="mt-1 text-sm text-gray-600">
             Ton poney gagnant : <span class="text-cyan-500 font-bold">{{$has_winner}}</span><br>
             Si ton prono s'avère exact, ça te rapportera <b>{{ config('app.winner_prono_points') }} points</b> en fin de compétition.
         </p>

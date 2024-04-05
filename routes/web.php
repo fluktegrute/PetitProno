@@ -38,6 +38,8 @@ Route::middleware('auth')->group(function () {
 
     Route::post('league-create', [LeagueController::class, 'create'])->name('league.create');
     Route::post('league-join', [LeagueController::class, 'join'])->name('league.join');
+    Route::get('league-delete/{id}', [LeagueController::class, 'delete'])->name('league.delete');
+    Route::get('remove-user/{league_id}/{user_id}', [LeagueController::class, 'remove_user'])->name('league.remove-user');
 
     Route::post('set-prono', [PronoController::class, 'setScore'])->name('set-prono');
     Route::post('set-booster', [PronoController::class, 'setBooster'])->name('set-booster');

@@ -18,7 +18,9 @@ S'il a joué un booster, son score pour le match est multiplié par le multiplic
 
 ### Ligues
 Par défaut, chaque joueur fait partie du "classement général" qui regroupe tous les joueurs inscrits.<br><br>
-Un joueur peut créer des ligues qui vont regrouper les joueurs qui les rejoignent. Le score d'un joueur dans une ligue est le même que dans le classement général, seuls les "adversaires" sont limités aux participants de la ligue.<br>
+Un joueur peut créer des ligues qui vont regrouper les joueurs qui les rejoignent. Le score d'un joueur dans une ligue est le même que dans le classement général, seuls les "adversaires" sont limités aux participants de la ligue.<br><br>
+Du fait que n'importe qui peut rejoindre n'importe quelle ligue, le joueur qui a créé la ligue a la possibilité d'en exclure des membres.<br>
+Il a également la possibilité de supprimer la ligue.
 
 ### Actualisations
 Il existe 2 routes permettant de mettre à jour l'appli depuis Football Data (sous réserve d'avoir fourni une clé API dans la variable d'environnement **API_KEY**) :

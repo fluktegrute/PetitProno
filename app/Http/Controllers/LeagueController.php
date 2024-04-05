@@ -18,15 +18,19 @@ class LeagueController extends Controller
 {
 	public function index($id = 0){
 		$requested_league = League::find($id);
+		
 		if($requested_league){
-
 			$user_in_league = UserLeague::where('league_id', $id)->where('user_id', auth()->user()->id)->first();
 			if(!$user_in_league)
-				return view('md-league')->withError(true);
+				return view('league')->withError(true);
 
 			$league_name = $requested_league->name;
 			$creator = User::find($requested_league->created_by);
 			$creator_name = $creator->name;
+
+			$user_is_creator = false;
+			if($creator->id == auth()->user()->id)
+				$user_is_creator = true;
 
 			$user_leagues = UserLeague::where('league_id', $id)->get();
 			$all_users = [];
@@ -37,12 +41,14 @@ class LeagueController extends Controller
 		else{
 			$league_name = "Générale";
 			$creator_name = false;
+			$user_is_creator = false;
 			$all_users = User::all();
 		}
 		
 		$league = collect();
 		foreach ($all_users as $user) {
 			$tmp = array(
+				'user_id' => $user->id,
 				'name' => $user->name,
 				'pronos_total' => Prono::where('user_id', $user->id)->where('is_counted', 1)->count(),
 				'pronos_won' => Prono::where('user_id', $user->id)->where('is_counted', 1)->where('is_won', 1)->count(),
@@ -56,7 +62,13 @@ class LeagueController extends Controller
 			return $item['score'];
 		});
 
-		return view('md-league')->withLeague($league)->withLeagueName($league_name)->withCreator($creator_name)->withError(false);
+		return view('league')
+			->withLeague($league)
+			->withLeagueName($league_name)
+			->withLeagueId($id)
+			->withCreator($creator_name)
+			->withUserIsCreator($user_is_creator)
+			->withError(false);
 	}
 
 	public function create(Request $request){
@@ -89,5 +101,21 @@ class LeagueController extends Controller
 		$user_league->save();
 
 		return Redirect::route('profile.edit')->with('status', 'league-joined');
+	}
+
+	public function delete($id){
+		$league = League::find($id);
+		if(auth()->user()->id == $league->created_by){
+			$league->delete();
+			UserLeague::where('league_id', $id)->delete();
+		}
+		return Redirect::route('league');
+	}
+
+	public function remove_user($league_id, $user_id){
+		$league = League::find($league_id);
+		if(auth()->user()->id == $league->created_by)
+			UserLeague::where('league_id', $league_id)->where('user_id', $user_id)->delete();
+		return Redirect::route('league', ['id' => $league_id]);
 	}
 }
