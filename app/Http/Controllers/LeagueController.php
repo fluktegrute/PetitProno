@@ -6,6 +6,7 @@ use App\Models\Prono;
 use App\Models\User;
 use App\Models\League;
 use App\Models\UserLeague;
+use App\Models\Comment;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +28,8 @@ class LeagueController extends Controller
 			$league_name = $requested_league->name;
 			$creator = User::find($requested_league->created_by);
 			$creator_name = $creator->name;
+
+			$comments = Comment::where('league_id', $id)->orderByDesc('comment_date')->get();
 
 			$user_is_creator = false;
 			if($creator->id == auth()->user()->id)
@@ -68,7 +71,8 @@ class LeagueController extends Controller
 			->withLeagueId($id)
 			->withCreator($creator_name)
 			->withUserIsCreator($user_is_creator)
-			->withError(false);
+			->withError(false)
+			->withComments($comments);
 	}
 
 	public function create(Request $request){
@@ -117,5 +121,41 @@ class LeagueController extends Controller
 		if(auth()->user()->id == $league->created_by)
 			UserLeague::where('league_id', $league_id)->where('user_id', $user_id)->delete();
 		return Redirect::route('league', ['id' => $league_id]);
+	}
+
+	public function post_comment(Request $request){
+		$comment = new Comment;
+		$comment->league_id = $request->league_id;
+		$comment->user_id = auth()->user()->id;
+		$comment->comment_date = date("Y-m-d H:i:s");
+		$comment->comment = $request->content;
+		$comment->save();
+
+		return Redirect::route('league', ['id' => $request->league_id]);
+	}
+
+	public function upload_image(Request $request){
+	    if($request->hasFile('file')) {
+	        //get filename with extension
+	        $filenamewithextension = $request->file('file')->getClientOriginalName();
+
+	        //get filename without extension
+	        $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+
+	        //get file extension
+	        $extension = $request->file('file')->getClientOriginalExtension();
+
+	        //filename to store
+	        $filenametostore = $filename.'_'.time().'.'.$extension;
+
+	        //Upload File
+	        $request->file('file')->storeAs('public/uploads', $filenametostore);
+
+	        // you can save image path below in database
+	        $path = asset('storage/uploads/'.$filenametostore);
+
+	        echo $path;
+	        exit;
+	    }
 	}
 }

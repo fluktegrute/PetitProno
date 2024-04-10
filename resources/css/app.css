@@ -118,6 +118,28 @@ input[type=number] {
   text-shadow: 0 0 0 rgb(223, 0, 15);
 }
 
+.comment{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #f5f5f5;
+}
+
+trix-editor{
+	min-height: 200px !important;
+}
+
+.trix-content img{
+    width: 200px;
+}
+
+.comment_body img{
+    width: 200px !important;
+}
+
+.comments .comment:nth-child(odd){
+	background-color: #f5f5f5;
+}
+
 @media screen and (max-width: 640px){
 	.staging-head{
 		font-weight: 900;

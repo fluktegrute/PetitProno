@@ -41,6 +41,9 @@ Route::middleware('auth')->group(function () {
     Route::get('league-delete/{id}', [LeagueController::class, 'delete'])->name('league.delete');
     Route::get('remove-user/{league_id}/{user_id}', [LeagueController::class, 'remove_user'])->name('league.remove-user');
 
+    Route::post('post-comment', [LeagueController::class, 'post_comment'])->name('league.post-comment');
+    Route::post('/upload-comment-image', [LeagueController::class, 'upload_image'])->name('league.upload-image');
+
     Route::post('set-prono', [PronoController::class, 'setScore'])->name('set-prono');
     Route::post('set-booster', [PronoController::class, 'setBooster'])->name('set-booster');
 });
