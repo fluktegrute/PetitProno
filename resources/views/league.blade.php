@@ -84,19 +84,19 @@
                         <div class="p-6 text-gray-900">
                             <h3 class="font-semibold text-l pb-10">Commentaires</h3>
                             <div class="comments">
-                            @foreach($comments as $comment)
-                                <table class="comment w-full">
-                                    <tr>
-                                        <td class="comment_head py-10 px-2 md:px-5 w-1/4 md:w-1/3">
-                                            <div class="comment_author font-bold">{{$comment->user->name}}</div>
-                                            <div class="comment_date text-gray-500 text-xs ml-5">le {{date("d/m/Y à H:i", strtotime($comment->comment_date))}}</div>
-                                        </td>
-                                        <td class="comment_body p-2 md:p-10 w-3/4 md:w-2/3">
-                                            {!! $comment->comment !!}
-                                        </td>
-                                    </tr>
+                                <table class="w-full">
+                                @foreach($comments as $comment)
+                                        <tr class="comment">
+                                            <td class="comment_head py-10 px-2 md:px-5 w-1/4 md:w-1/3">
+                                                <div class="comment_author font-bold">{{$comment->user->name}}</div>
+                                                <div class="comment_date text-gray-500 text-xs ml-5">le {{date("d/m/Y à H:i", strtotime($comment->comment_date))}}</div>
+                                            </td>
+                                            <td class="comment_body p-2 md:p-10 w-3/4 md:w-2/3">
+                                                {!! $comment->comment !!}
+                                            </td>
+                                        </tr>
+                                @endforeach
                                 </table>
-                            @endforeach
                             </div>
                         </div>
                         <div class="p-6 text-gray-900">
@@ -131,3 +131,8 @@
         @endif
     @endif
 </x-app-layout>
+
+<!-- Trix -->
+<link rel="stylesheet" href="{{ asset('css/trix.css') }}">
+<script src="{{ asset('js/trix.min.js') }}"></script>
+<script src="{{ asset('js/attachments.js') }}"></script>
