@@ -77,41 +77,43 @@
             </div>
         </div>
 
-        <div class="py-6">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 my-1/2">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">
-                        <h3 class="font-semibold text-l pb-10">Commentaires</h3>
-                        <div class="comments">
-                        @foreach($comments as $comment)
-                            <table class="comment w-full">
-                                <tr>
-                                    <td class="comment_head py-10 px-2 md:px-5 w-1/4 md:w-1/3">
-                                        <div class="comment_author font-bold">{{$comment->user->name}}</div>
-                                        <div class="comment_date text-gray-500 text-xs ml-5">le {{date("d/m/Y à H:i", strtotime($comment->comment_date))}}</div>
-                                    </td>
-                                    <td class="comment_body p-2 md:p-10 w-3/4 md:w-2/3">
-                                        {!! $comment->comment !!}
-                                    </td>
-                                </tr>
-                            </table>
-                        @endforeach
-                        </div>
-                    </div>
-                    <div class="p-6 text-gray-900">
-                        <h3 class="font-semibold text-l">Ajouter un commentaire</h3>
-                        <form method="post" action="{{ route("league.post-comment") }}">
-                            @csrf
-                            <x-trix-editor></x-trix-editor>
-                            <input type="hidden" id="league_id" name="league_id" value="{{$leagueId}}">
-                            <div class="py-2 text-right">
-                                <x-primary-button>Envoyer</x-primary-button>
+        @if($comments)
+            <div class="py-6">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 my-1/2">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-6 text-gray-900">
+                            <h3 class="font-semibold text-l pb-10">Commentaires</h3>
+                            <div class="comments">
+                            @foreach($comments as $comment)
+                                <table class="comment w-full">
+                                    <tr>
+                                        <td class="comment_head py-10 px-2 md:px-5 w-1/4 md:w-1/3">
+                                            <div class="comment_author font-bold">{{$comment->user->name}}</div>
+                                            <div class="comment_date text-gray-500 text-xs ml-5">le {{date("d/m/Y à H:i", strtotime($comment->comment_date))}}</div>
+                                        </td>
+                                        <td class="comment_body p-2 md:p-10 w-3/4 md:w-2/3">
+                                            {!! $comment->comment !!}
+                                        </td>
+                                    </tr>
+                                </table>
+                            @endforeach
                             </div>
-                        </form>
+                        </div>
+                        <div class="p-6 text-gray-900">
+                            <h3 class="font-semibold text-l">Ajouter un commentaire</h3>
+                            <form method="post" action="{{ route("league.post-comment") }}">
+                                @csrf
+                                <x-trix-editor></x-trix-editor>
+                                <input type="hidden" id="league_id" name="league_id" value="{{$leagueId}}">
+                                <div class="py-2 text-right">
+                                    <x-primary-button>Envoyer</x-primary-button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
 
         @if($userIsCreator)
             <div class="sticky bottom-0 left-0">

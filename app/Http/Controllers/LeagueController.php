@@ -46,6 +46,7 @@ class LeagueController extends Controller
 			$creator_name = false;
 			$user_is_creator = false;
 			$all_users = User::all();
+			$comments = false;
 		}
 		
 		$league = collect();
