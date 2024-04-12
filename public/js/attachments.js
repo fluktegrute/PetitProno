@@ -1,9 +1,28 @@
 (function() {
     var HOST = "/upload-comment-image";
- 
+
+    $(".trix-button-group-spacer").addClass("px-2");
+    $(".trix-button-group-spacer").text(".jpg ou .png, 2 Mo max.");
+
     addEventListener("trix-attachment-add", function(event) {
         if (event.attachment.file) {
-            uploadFileAttachment(event.attachment)
+            if(event.attachment.file.size <= 2000000){
+                if(event.attachment.file.type == 'image/jpeg' || event.attachment.file.type == 'image/png'){
+                    $(".trix-button-group-spacer").text(".jpg ou .png, 2 Mo max.");
+                    $(".trix-button-group-spacer").addClass("px-2");
+                    uploadFileAttachment(event.attachment);
+                }
+                else{
+                    $(".trix-button-group-spacer").addClass("px-2");
+                    $(".trix-button-group-spacer").text("Format de fichier non valide");
+                    $("trix-editor").val('');
+                }                    
+            }
+            else{
+                $(".trix-button-group-spacer").addClass("px-2");
+                $(".trix-button-group-spacer").text("Fichier trop volumineux");
+                $("trix-editor").val('');
+            }
         }
     })
  
