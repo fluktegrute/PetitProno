@@ -125,13 +125,14 @@ class LeagueController extends Controller
 	}
 
 	public function post_comment(Request $request){
-		$comment = new Comment;
-		$comment->league_id = $request->league_id;
-		$comment->user_id = auth()->user()->id;
-		$comment->comment_date = date("Y-m-d H:i:s");
-		$comment->comment = $request->content;
-		$comment->save();
-
+		if(!is_null($request->content)){
+			$comment = new Comment;
+			$comment->league_id = $request->league_id;
+			$comment->user_id = auth()->user()->id;
+			$comment->comment_date = date("Y-m-d H:i:s");
+			$comment->comment = $request->content;
+			$comment->save();
+		}
 		return Redirect::route('league', ['id' => $request->league_id]);
 	}
 
