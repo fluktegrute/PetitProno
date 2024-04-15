@@ -6,7 +6,8 @@ J'ai donc recréé une sorte de "Mon Petit Prono" tel qu'il était (à peu près
 
 ## Prérequis
 
-Les équipes/matches/résultats sont issus et actualisés à partir des API de **[Football Data](https://www.football-data.org/)**, une clé API est donc fortement conseillée pour faire fonctionner l'appli (le plan gratuit est suffisant).
+Les équipes/matches/résultats sont issus et actualisés à partir des API de **[Football Data](https://www.football-data.org/)**, une clé API est donc fortement conseillée pour faire fonctionner l'appli (le plan gratuit est suffisant).<br><br>
+L'application est basée sur le framework PHP Laravel (v10), une base de donnée relationnelle est nécessaire pour la faire fonctionner (testé avec PHP v8.2, MySQL/MariaDB et PostgreSQL).
 
 ## Fonctionnement
 
