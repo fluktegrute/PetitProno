@@ -40,3 +40,8 @@ Les paramètres suivants sont personnalisables :
     - pour le multiplicateur des boosters (variable d'environnement **BOOSTER_MULTIPLIER**), par défaut 2
     - pour une tentative de tricherie (points perdus pour le coup) (variable d'environnement **CHEATING_POINTS_TO_REMOVE**), par défaut 15
 - Nombre de boosters disponibles par joueur (variable d'environnement **INITIAL_BOOSTER_QUANTITY**), par défaut 3
+
+## Licence
+
+PetitProno est open-source et est concédé sous licence selon les termes de la [licence MIT](https://opensource.org/licenses/MIT).<br>
+En plus de pouvoir l'utiliser, copier, partager, modifier etc, reçois des gros bisous si tu as lu jusqu'ici (et si tu es d'accord).
