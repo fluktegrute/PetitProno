@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
+use App\Http\Controllers\HelpController;
+
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -25,6 +27,10 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        $hcaptcha_result = HelpController::checkCaptcha($request->{'h-captcha-response'});
+        if(!$hcaptcha_result->success)
+            return redirect()->route('login')->with('status', 'invalid-captcha');
+
         $request->authenticate();
 
         $request->session()->regenerate();

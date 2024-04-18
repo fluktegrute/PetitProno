@@ -26,6 +26,10 @@ class MatchesController extends Controller
 	public function update(Request $request){
 		HelpController::checkToken($request->input('token'));
 		$all_matches = $this->api->call('matches');
+
+		$updated = 0;
+		$created = 0;
+
 		foreach ($all_matches->matches as $api_match) {
 			if(!is_null($api_match->homeTeam->id) && !is_null($api_match->awayTeam->id)){
 				$match = ECMatch::where('api_id', $api_match->id)->first();
@@ -43,6 +47,7 @@ class MatchesController extends Controller
 		            $match->home_goals = 0;
 		            $match->away_goals = 0;
 					$match->save();
+					$created++;
 				}
 				else{
 					if(!property_exists($api_match->score, 'regularTime')){
@@ -66,9 +71,13 @@ class MatchesController extends Controller
 					}
 					if(strtotime($match->date) < strtotime('now'))
 						PronoController::update($match, $winner);
+
+					$updated++;
 				}
 			}
 		}
+		echo "Matches created: $created<br>";
+		echo "Matches updated: $updated<br>";
 	}
 
 	public function index(){

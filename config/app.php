@@ -197,4 +197,8 @@ return [
     'booster_multiplier' => env('BOOSTER_MULTIPLIER', 2),
     'initial_booster_quantity' => env('INITIAL_BOOSTER_QUANTITY', 3),
     'cheating_points_to_remove' => env('CHEATING_POINTS_TO_REMOVE', 15),
+
+    'hcaptcha_sitekey' => env('HCAPTCHA_SITEKEY'),
+    'hcaptcha_secret' => env('HCAPTCHA_SECRET'),
+    'hcaptcha_verify_url' => env('HCAPTCHA_VERIFY_URL'),
 ];

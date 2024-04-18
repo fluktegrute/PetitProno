@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use App\Http\Controllers\HelpController;
 
 class RegisteredUserController extends Controller
 {
@@ -30,6 +31,10 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        $hcaptcha_result = HelpController::checkCaptcha($request->{'h-captcha-response'});
+        if(!$hcaptcha_result->success)
+            return redirect()->route('register')->with('status', 'invalid-captcha');
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],

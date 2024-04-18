@@ -39,6 +39,8 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+        <div class="h-captcha mt-4" data-sitekey="{{ config('app.hcaptcha_sitekey') }}"></div>
+
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                 {{ __('Tu as déjà un compte ?') }}
@@ -47,6 +49,16 @@
             <x-primary-button class="ms-4">
                 {{ __('Inscription') }}
             </x-primary-button>
+            @if (session('status') === 'invalid-captcha')
+                <p
+                    x-data="{ show: true }"
+                    x-show="show"
+                    x-transition
+                    x-init="setTimeout(() => show = false, 5000)"
+                    class="text-sm text-gray-600 ml-4"
+                >{{ __('Captcha invalide.') }}</p>
+            @endif
         </div>
     </form>
 </x-guest-layout>
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>

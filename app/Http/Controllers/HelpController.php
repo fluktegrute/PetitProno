@@ -10,4 +10,22 @@ class HelpController extends Controller
             die("Accès à la page interdit");
 		}
 	}
+
+	public static function checkCaptcha($response){
+		$data = [
+			'secret' => config('app.hcaptcha_secret'),
+			'response' => $response,
+		];
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, config('app.hcaptcha_verify_url'));
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+		$output = json_decode(curl_exec($ch));
+
+		curl_close($ch);
+
+		return $output;
+	}
 }

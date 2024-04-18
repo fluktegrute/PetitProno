@@ -21,6 +21,9 @@ class TeamsController extends Controller
 		
 		$all_teams = $this->api->call('standings');
 
+		$updated = 0;
+		$created = 0;
+
 		foreach ($all_teams->standings as $group) {
 			foreach ($group->table as $api_team) {
 				if(!is_null($api_team->team->id)){
@@ -33,6 +36,7 @@ class TeamsController extends Controller
 						$team->position = $api_team->position;
 						$team->group = $group->group;
 						$team->save();
+						$created++;
 					}
 					else{
 						$team->position = $api_team->position;
@@ -45,9 +49,12 @@ class TeamsController extends Controller
 						$team->goals_against = $api_team->goalsAgainst;
 						$team->goal_diff = $api_team->goalDifference;
 						$team->save();
+						$updated++;
 					}
 				}
 			}
 		}
+		echo "Teams created: $created<br>";
+		echo "Teams updated: $updated<br>";
 	}
 }

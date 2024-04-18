@@ -1,6 +1,6 @@
 <x-guest-layout>
     <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <x-auth-session-status class="mb-4 hidden" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
@@ -32,6 +32,8 @@
             </label>
         </div>
 
+        <div class="h-captcha" data-sitekey="{{ config('app.hcaptcha_sitekey') }}"></div>
+
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
@@ -42,6 +44,15 @@
             <x-primary-button class="ms-3">
                 {{ __('Connexion') }}
             </x-primary-button>
+            @if (session('status') === 'invalid-captcha')
+                <p
+                    x-data="{ show: true }"
+                    x-show="show"
+                    x-transition
+                    x-init="setTimeout(() => show = false, 5000)"
+                    class="text-sm text-gray-600 ml-4"
+                >{{ __('Captcha invalide.') }}</p>
+            @endif
         </div>
         <div class="flex items-center space-between mt-4">
             @if (Route::has('register'))
@@ -53,3 +64,4 @@
         </div>
     </form>
 </x-guest-layout>
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
