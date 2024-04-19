@@ -117,7 +117,7 @@
 
         @if($userIsCreator)
             <div class="sticky bottom-0 left-0">
-                <div class="w-1/6 sm:px-6 lg:px-8 my-1/2">
+                <div class="sm:w-1/6 w-2/3 sm:px-6 lg:px-8 my-1/2">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="flex p-6 text-gray-900">
                             <div class="flex-1">Supprimer la ligue ?</div>
