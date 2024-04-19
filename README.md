@@ -9,7 +9,7 @@ J'ai donc recréé une sorte de "Mon Petit Prono" tel qu'il était (à peu près
 Les équipes/matches/résultats sont issus et actualisés à partir des API de **[Football Data](https://www.football-data.org/)**, une clé API est donc fortement conseillée pour faire fonctionner l'appli (le plan gratuit est suffisant).<br><br>
 L'application est basée sur le framework PHP Laravel (v10), une base de donnée relationnelle est nécessaire pour la faire fonctionner (testé avec PHP v8.2, MySQL/MariaDB et PostgreSQL).<br>
 <br>
-La création de compte et l'authentification sont protégés par hCaptcha. Il faudra donc une clé de site et une clé secrète pour ces 2 actions (ou alors supprimer l'intégration hCaptcha manuellement). 3 variables d'environnement sont à renseigner : 
+La création de compte et l'authentification sont protégées par hCaptcha. Il faudra donc une clé de site et une clé secrète pour ces 2 actions (ou alors supprimer l'intégration hCaptcha manuellement). 3 variables d'environnement sont à renseigner : 
 - **HCAPTCHA_SITEKEY**
 - **HCAPTCHA_SECRET**
 - **HCAPTCHA_VERIFY_URL**
