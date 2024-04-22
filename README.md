@@ -4,11 +4,18 @@ Petit Prono est un outil qui permet de jouer à faire des pronos sur l'Euro 2024
 L'idée vient de "Mon Petit Gazon" (props to them) qui avait lancé une appli du même genre pour le Mondial 2018 mais, entre temps, celle-ci est devenue une usine à gaz et a perdu de sa simplicité/convivialité (AMHA).<br><br>
 J'ai donc recréé une sorte de "Mon Petit Prono" tel qu'il était (à peu près) à l'époque, histoire d'y rejouer avec des collègues.<br>
 
-## Prérequis
+## Bases techniques
+
+L'application est basée sur le framework PHP Laravel (v10), une base de donnée relationnelle est nécessaire pour la faire fonctionner (testé avec PHP v8.2, MySQL/MariaDB et PostgreSQL), ainsi que npm.<br>
+Apres avoir cloné le repo, il suffit de lancer les commandes suivantes pour avoir une application fonctionnelle :
+```
+composer update
+php artisan migrate
+npm run dev (ou npm run build)
+php artisan optimize
+```
 
 Les équipes/matches/résultats sont issus et actualisés à partir des API de **[Football Data](https://www.football-data.org/)**, une clé API est donc fortement conseillée pour faire fonctionner l'appli (le plan gratuit est suffisant).<br><br>
-L'application est basée sur le framework PHP Laravel (v10), une base de donnée relationnelle est nécessaire pour la faire fonctionner (testé avec PHP v8.2, MySQL/MariaDB et PostgreSQL).<br>
-<br>
 La création de compte et l'authentification peuvent être protégées par hCaptcha. Pour que ce soit effectif, il faudra renseigner une clé de site et une clé secrète (idem qu'au dessus, le plan gratuit suffit sauf si tu comptes avoir plus d'un million de requêtes par mois). Les variables d'environnement à renseigner sont : 
 - **HCAPTCHA_SITEKEY**
 - **HCAPTCHA_SECRET**
