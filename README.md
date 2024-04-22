@@ -15,7 +15,7 @@ npm run dev (ou npm run build)
 php artisan optimize
 ```
 
-Les équipes/matches/résultats sont issus et actualisés à partir des API de **[Football Data](https://www.football-data.org/)**, une clé API est donc fortement conseillée pour faire fonctionner l'appli (le plan gratuit est suffisant).<br><br>
+Les équipes/matches/résultats sont issus et actualisés à partir des API de **[Football Data](https://www.football-data.org/)**, une clé API est donc fortement conseillée pour faire fonctionner l'appli (le plan gratuit est suffisant). Voir le paragraphe [Actualisations](https://github.com/fluktegrute/PetitProno#actualisations) pour plus d'infos<br><br>
 La création de compte et l'authentification peuvent être protégées par hCaptcha. Pour que ce soit effectif, il faudra renseigner une clé de site et une clé secrète (idem qu'au dessus, le plan gratuit suffit sauf si tu comptes avoir plus d'un million de requêtes par mois). Les variables d'environnement à renseigner sont : 
 - **HCAPTCHA_SITEKEY**
 - **HCAPTCHA_SECRET**
