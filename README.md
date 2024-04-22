@@ -7,12 +7,13 @@ J'ai donc recréé une sorte de "Mon Petit Prono" tel qu'il était (à peu près
 ## Bases techniques
 
 L'application est basée sur le framework PHP Laravel (v10), une base de donnée relationnelle est nécessaire pour la faire fonctionner (testé avec PHP v8.2, MySQL/MariaDB et PostgreSQL), ainsi que npm.<br>
-Apres avoir cloné le repo, il suffit de lancer les commandes suivantes pour avoir une application fonctionnelle :
+Apres avoir cloné le repo et renseigné les infos nécessaires dans le fichier `.env`, il suffit de lancer les commandes suivantes pour avoir une application fonctionnelle :
 ```
 composer update
+php artisan key:generate
 php artisan migrate
-npm run dev (ou npm run build)
 php artisan optimize
+npm run dev (ou npm run build)
 ```
 
 Les équipes/matches/résultats sont issus et actualisés à partir des API de **[Football Data](https://www.football-data.org/)**, une clé API est donc fortement conseillée pour faire fonctionner l'appli (le plan gratuit est suffisant). Voir le paragraphe [Actualisations](https://github.com/fluktegrute/PetitProno#actualisations) pour plus d'infos<br><br>
