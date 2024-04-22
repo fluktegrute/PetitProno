@@ -1,7 +1,7 @@
 ## À propos de Petit Prono
 
 Petit Prono est un outil qui permet de jouer à faire des pronos sur l'Euro 2024 de football.<br><br>
-L'idée vient de "Mon Petit Gazon" (props to them) qui avait lancé une appli du même genre pour l'Euro 2020 mais, entre temps, celle-ci est devenue une usine à gaz et a perdu de sa simplicité/convivialité (AMHA).<br><br>
+L'idée vient de "Mon Petit Gazon" (props to them) qui avait lancé une appli du même genre pour le Mondial 2018 mais, entre temps, celle-ci est devenue une usine à gaz et a perdu de sa simplicité/convivialité (AMHA).<br><br>
 J'ai donc recréé une sorte de "Mon Petit Prono" tel qu'il était (à peu près) à l'époque, histoire d'y rejouer avec des collègues.<br>
 
 ## Prérequis
