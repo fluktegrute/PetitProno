@@ -31,9 +31,11 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $hcaptcha_result = HelpController::checkCaptcha($request->{'h-captcha-response'});
-        if(!$hcaptcha_result->success)
-            return redirect()->route('register')->with('status', 'invalid-captcha');
+        if(config('app.hcaptcha_sitekey')){
+            $hcaptcha_result = HelpController::checkCaptcha($request->{'h-captcha-response'});
+            if(!$hcaptcha_result->success)
+                return redirect()->route('register')->with('status', 'invalid-captcha');
+        }
 
         $request->validate([
             'name' => ['required', 'string', 'max:255'],

@@ -32,7 +32,9 @@
             </label>
         </div>
 
-        <div class="h-captcha" data-sitekey="{{ config('app.hcaptcha_sitekey') }}"></div>
+        @if (config('app.hcaptcha_sitekey'))
+            <div class="h-captcha mt-4" data-sitekey="{{ config('app.hcaptcha_sitekey') }}"></div>
+        @endif
 
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
@@ -64,4 +66,6 @@
         </div>
     </form>
 </x-guest-layout>
-<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+@if (config('app.hcaptcha_sitekey'))
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+@endif

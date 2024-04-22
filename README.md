@@ -1,7 +1,7 @@
 ## À propos de Petit Prono
 
 Petit Prono est un outil qui permet de jouer à faire des pronos sur l'Euro 2024 de football.<br><br>
-L'idée vient de "Mon Petit Gazon" (props to them) qui avait lancé une appli du même genre pour l'Euro 2020 mais, entre temps, celle-ci est devenue une usine à gaz et a perdu de sa simplicité/convivialité (AMHA).<br><br>
+L'idée vient de "Mon Petit Gazon" (props to them) qui avait lancé une appli du même genre pour le Mondial 2018 mais, entre temps, celle-ci est devenue une usine à gaz et a perdu de sa simplicité/convivialité (AMHA).<br><br>
 J'ai donc recréé une sorte de "Mon Petit Prono" tel qu'il était (à peu près) à l'époque, histoire d'y rejouer avec des collègues.<br>
 
 ## Prérequis
@@ -9,10 +9,9 @@ J'ai donc recréé une sorte de "Mon Petit Prono" tel qu'il était (à peu près
 Les équipes/matches/résultats sont issus et actualisés à partir des API de **[Football Data](https://www.football-data.org/)**, une clé API est donc fortement conseillée pour faire fonctionner l'appli (le plan gratuit est suffisant).<br><br>
 L'application est basée sur le framework PHP Laravel (v10), une base de donnée relationnelle est nécessaire pour la faire fonctionner (testé avec PHP v8.2, MySQL/MariaDB et PostgreSQL).<br>
 <br>
-La création de compte et l'authentification sont protégées par hCaptcha. Il faudra donc une clé de site et une clé secrète pour ces 2 actions (ou alors supprimer l'intégration hCaptcha manuellement). 3 variables d'environnement sont à renseigner : 
+La création de compte et l'authentification peuvent être protégées par hCaptcha. Pour que ce soit effectif, il faudra renseigner une clé de site et une clé secrète (idem qu'au dessus, le plan gratuit suffit sauf si tu comptes avoir plus d'un million de requêtes par mois). Les variables d'environnement à renseigner sont : 
 - **HCAPTCHA_SITEKEY**
 - **HCAPTCHA_SECRET**
-- **HCAPTCHA_VERIFY_URL**
 
 ## Fonctionnement
 

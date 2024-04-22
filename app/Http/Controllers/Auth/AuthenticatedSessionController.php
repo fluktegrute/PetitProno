@@ -27,9 +27,11 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $hcaptcha_result = HelpController::checkCaptcha($request->{'h-captcha-response'});
-        if(!$hcaptcha_result->success)
-            return redirect()->route('login')->with('status', 'invalid-captcha');
+        if(config('app.hcaptcha_sitekey')){
+            $hcaptcha_result = HelpController::checkCaptcha($request->{'h-captcha-response'});
+            if(!$hcaptcha_result->success)
+                return redirect()->route('login')->with('status', 'invalid-captcha');
+        }
 
         $request->authenticate();
 
