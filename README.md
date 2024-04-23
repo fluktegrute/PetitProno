@@ -26,14 +26,25 @@ La création de compte et l'authentification peuvent être protégées par hCapt
 ### Jeu de base
 Chaque joueur peut pronostiquer le résultat d'un match et choisir de jouer un de ses boosters sur ce match. <br>
 Il ne peut le faire qu'avant le début du match (une tentative de création/modification de prono après le début du match associé entraine une pénalité pour tentatvie de tricherie).<br><br>
-Si son prono est bon, il gagne des points en fonction du résultat du match (il recevra plus de points pour un score exact), sinon il ne gagne pas de points.<br><br>
-S'il a joué un booster, son score pour le match est multiplié par le multiplicateur.
+Si son prono est bon, il gagne des points en fonction du résultat du match (il recevra plus de points pour un score exact), sinon il ne gagne pas de points.<br>
+S'il a joué un booster, son score pour le match est multiplié par le multiplicateur.<br><br>
+Les joueurs peuvent également pronostiquer le vainqueur final, pour un bonus de points supplémentaires en fin de tournoi.<br><br>
+Vue des matches / pronostics :
+![pb1](https://github.com/fluktegrute/PetitProno/assets/57525938/6f895360-c1dc-4301-a9fc-7c8bdc8746b6)<br><br>
+Vue du profil avec choix du vainqueur et possibilité de créer ou rejoindre une ligue : 
+![pb2](https://github.com/fluktegrute/PetitProno/assets/57525938/df7fbf23-4d4e-4015-bd38-ab7a09701336)<br><br>
+Vue du classement des équipes : 
+![pb3](https://github.com/fluktegrute/PetitProno/assets/57525938/8c6ccfb6-8674-44ed-8527-f4dc79ef47aa)<br><br>
+
 
 ### Ligues
 Par défaut, chaque joueur fait partie du "classement général" qui regroupe tous les joueurs inscrits.<br><br>
 Un joueur peut créer des ligues qui vont regrouper les joueurs qui les rejoignent. Le score d'un joueur dans une ligue est le même que dans le classement général, seuls les "adversaires" sont limités aux participants de la ligue.<br><br>
 Du fait que n'importe qui peut rejoindre n'importe quelle ligue, le joueur qui a créé la ligue a la possibilité d'en exclure des membres.<br>
-Il a également la possibilité de supprimer la ligue.
+Il a également la possibilité de supprimer la ligue.<br><br>
+Vue d'une ligue :
+![pb4](https://github.com/fluktegrute/PetitProno/assets/57525938/6ed8e748-d593-44c8-be0a-8779b4e0738a)
+
 
 ### Actualisations
 Il existe 2 routes permettant de mettre à jour l'appli depuis Football Data (sous réserve d'avoir fourni une clé API dans la variable d'environnement **API_KEY**) :
