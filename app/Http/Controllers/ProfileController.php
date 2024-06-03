@@ -12,6 +12,7 @@ use Illuminate\View\View;
 use App\Models\Team;
 use App\Models\League;
 use App\Models\User;
+use App\Models\ECMatch;
 
 use App\Http\Controllers\HelpController;
 
@@ -37,11 +38,14 @@ class ProfileController extends Controller
         }
 
         if(is_null($request->user()->prono_winner)) {
-            $teams = Team::all();
-            $teams = $teams->sortBy(function($team) {
-                $team->name = $team->name();
-                return $team->name;
-            });
+            $first_match = ECMatch::orderBy('date')->first();
+            if(strtotime(date('Y-m-d H:i:s')) < strtotime($first_match->date)){
+                $teams = Team::all();
+                $teams = $teams->sortBy(function($team) {
+                    $team->name = $team->name();
+                    return $team->name;
+                });
+            }
         }
         else{
             $has_winner = Team::where('id', $request->user()->prono_winner)->first();
@@ -50,7 +54,7 @@ class ProfileController extends Controller
         return view('profile.edit', [
             'user' => $request->user(),
             'teams' => $teams,
-            'has_winner' => $has_winner ? $has_winner->name() : null,
+            'has_winner' => $has_winner ? $has_winner->name() : false,
             'leagues' => $leagues,
         ]);
     }

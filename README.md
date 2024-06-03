@@ -28,7 +28,7 @@ Chaque joueur peut pronostiquer le résultat d'un match et choisir de jouer un d
 Il ne peut le faire qu'avant le début du match (une tentative de création/modification de prono après le début du match associé entraine une pénalité pour tentatvie de tricherie).<br><br>
 Si son prono est bon, il gagne des points en fonction du résultat du match (il recevra plus de points pour un score exact), sinon il ne gagne pas de points.<br>
 S'il a joué un booster, son score pour le match est multiplié par le multiplicateur.<br><br>
-Les joueurs peuvent également pronostiquer le vainqueur final, pour un bonus de points supplémentaires en fin de tournoi.<br>
+Les joueurs peuvent également pronostiquer le vainqueur final, pour un bonus de points supplémentaires en fin de tournoi. Le vainqueur final ne peut être choisi qu'une fois, et avant le debut du premier match.<br>
 
 ### Ligues
 Par défaut, chaque joueur fait partie du "classement général" qui regroupe tous les joueurs inscrits.<br><br>

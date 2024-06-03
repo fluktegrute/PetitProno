@@ -84,7 +84,7 @@ class MatchesController extends Controller
 		$user_id = auth()->user()->id;
 		$all_matches = ECMatch::orderBy('date')->get();
 		$matches = [];
-		$has_winner = !is_null(auth()->user()->prono_winner);
+		$has_winner = !is_null(auth()->user()->prono_winner) || strtotime(date('Y-m-d H:i:s')) > strtotime($all_matches[0]->date);
 		foreach ($all_matches as $match) {
 			$prono = Prono::where('user_id', $user_id)->where('match_id', $match->id)->first();
 

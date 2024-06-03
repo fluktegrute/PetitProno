@@ -130,8 +130,14 @@ class PronoController extends Controller
 	public function setWinner(Request $request){
 		$user_id = auth()->user()->id;
 		$user = User::find($user_id);
-		$user->prono_winner = $request->set_winner;
-		$user->save();
-		return Redirect::route('profile.edit')->with('status', 'winner-updated');
+		$first_match = ECMatch::orderBy('date')->first();
+
+		if(is_null($user->prono_winner) && strtotime(date('Y-m-d H:i:s')) < strtotime($first_match->date)){
+			$user->prono_winner = $request->set_winner;
+			$user->save();
+			return Redirect::route('profile.edit')->with('status', 'winner-updated');
+		}
+		else
+			return Redirect::route('profile.edit')->with('status', 'cannot-update');
 	}
 }

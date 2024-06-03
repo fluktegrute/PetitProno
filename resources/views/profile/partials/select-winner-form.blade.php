@@ -7,7 +7,7 @@
 
     @if($teams)
         <p class="mt-1 text-sm text-gray-600">
-            Tu peux choisir l'équipe qui, selon toi, va gagner l'Euro.<br>
+            <b>Avant le début de la compétition</b>, tu peux choisir l'équipe qui, selon toi, va gagner l'Euro.<br>
             Si ton prono s'avère exact, ça te rapportera <b>{{ config('app.winner_prono_points') }} points</b> en fin de compétition.<br>
             <span class="text-red-500 font-bold">Attention : une fois ton poney sélectionné, tu ne pourras pas revenir en arrière !
         </p>
@@ -26,23 +26,35 @@
             </div>
 
             <div class="flex items-center gap-4">
-                <x-primary-button>{{ __('Valider') }}</x-primary-button>
+                <x-primary-button>Valider</x-primary-button>
 
                 @if (session('status') === 'winner-updated')
                     <p
                         x-data="{ show: true }"
                         x-show="show"
                         x-transition
-                        x-init="setTimeout(() => show = false, 2000)"
+                        x-init="setTimeout(() => show = false, 5000)"
                         class="text-sm text-gray-600"
-                    >{{ __('Enregistré.') }}</p>
+                    >Poney Enregistré !</p>
+                @elseif(session('status') === 'cannot-update')
+                    <p
+                        x-data="{ show: true }"
+                        x-show="show"
+                        x-transition
+                        x-init="setTimeout(() => show = false, 5000)"
+                        class="text-sm text-gray-600"
+                    >Il est trop tard pour modifier ton poney</p>
                 @endif
             </div>
         </form>
-    @else
+    @elseif($has_winner)
         <p class="mt-1 text-sm text-gray-600">
             Ton poney gagnant : <span class="text-cyan-500 font-bold">{{$has_winner}}</span><br>
             Si ton prono s'avère exact, ça te rapportera <b>{{ config('app.winner_prono_points') }} points</b> en fin de compétition.
+        </p>
+    @else
+        <p class="mt-1 text-sm text-gray-600">
+            <b>{{ config('app.winner_prono_points') }} points</b>, c'est ce que tu aurais pu gagner si tu avais pronostiqué un gagnant avant le début de la compétition... Dommage !
         </p>
     @endif
 </section>
