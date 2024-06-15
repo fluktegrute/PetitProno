@@ -50,13 +50,13 @@ class MatchesController extends Controller
 					$created++;
 				}
 				else{
-					if(!property_exists($api_match->score, 'regularTime')){
+					if(property_exists($api_match->score, 'regularTime')){
 						$match->home_goals = $api_match->score->regularTime->home ?? 0;
-						$match->away_goals = $api_match->score->regularTime->home ?? 0;
+						$match->away_goals = $api_match->score->regularTime->away ?? 0;
 					}
 					else{
-						$match->home_goals = $api_match->score->fulltime->home ?? 0;
-						$match->away_goals = $api_match->score->fulltime->home ?? 0;
+						$match->home_goals = $api_match->score->fullTime->home ?? 0;
+						$match->away_goals = $api_match->score->fullTime->away ?? 0;
 					}
 					$match->winner = $api_match->score->winner;
 					$match->save();
@@ -69,7 +69,7 @@ class MatchesController extends Controller
 							$winner->save();
 						}
 					}
-					if(strtotime($match->date) < strtotime('now'))
+					if(strtotime($match->date) + 10800 < strtotime('now'))
 						PronoController::update($match, $winner);
 
 					$updated++;

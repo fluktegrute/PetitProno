@@ -35,6 +35,42 @@ class StagingController extends Controller
 				}
 			}
 		}
-		return view('staging')->withGroups($groups);
+
+		$bracket = [
+			'last_16_1' => [
+				$groups['A'][0],
+				$groups['C'][1],
+			],
+			'last_16_2' => [
+				$groups['B'][0],
+				['name' => 'TBD'],
+			],
+			'last_16_3' => [
+				$groups['D'][1],
+				$groups['E'][1],
+			],
+			'last_16_4' => [
+				$groups['F'][0],
+				['name' => 'TBD'],
+			],
+			'last_16_5' => [
+				$groups['A'][1],
+				$groups['B'][1],
+			],
+			'last_16_6' => [
+				$groups['C'][0],
+				['name' => 'TBD'],
+			],
+			'last_16_7' => [
+				$groups['E'][0],
+				['name' => 'TBD'],
+			],
+			'last_16_8' => [
+				$groups['D'][0],
+				$groups['F'][1],
+			],
+		];
+
+		return view('staging')->withGroups($groups)->withBracket($bracket);
 	}
 }
