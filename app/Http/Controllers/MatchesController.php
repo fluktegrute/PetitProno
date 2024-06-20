@@ -69,7 +69,7 @@ class MatchesController extends Controller
 							$winner->save();
 						}
 					}
-					if(strtotime($match->date) + 10800 < strtotime('now'))
+					if($api_match->status == 'FINISHED')
 						PronoController::update($match, $winner);
 
 					$updated++;
