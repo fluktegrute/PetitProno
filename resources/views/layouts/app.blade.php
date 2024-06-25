@@ -41,5 +41,6 @@
                 {{ $slot }}
             </main>
         </div>
+        {{-- @include('layouts.footer', ['year' => date('Y')]) --}}
     </body>
 </html>
