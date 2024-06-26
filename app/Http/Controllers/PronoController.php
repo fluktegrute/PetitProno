@@ -7,6 +7,7 @@ use App\Http\Controllers\HelpController;
 use App\Models\Prono;
 use App\Models\ECMatch;
 use App\Models\User;
+use App\Models\Team;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -139,5 +140,44 @@ class PronoController extends Controller
 		}
 		else
 			return Redirect::route('profile.edit')->with('status', 'cannot-update');
+	}
+
+	public function getPronosForMatch(Request $request){
+		$match_id = $request->match_id ?? false;
+		if(!$match_id) 
+			return response()->json([]);
+
+		$match = ECMatch::find($match_id);
+		$all_pronos = Prono::where('match_id', $match_id)->get();
+
+		$home_team = Team::where('api_id', $match->home_team)->first();
+		$away_team = Team::where('api_id', $match->away_team)->first();
+
+		$tmp = [
+			'home' => [
+				'name' => $home_team->name(),
+				'flag' => $home_team->flag,
+				'score' => $match->home_goals,
+			],
+			'away' => [
+				'name' => $away_team->name(),
+				'flag' => $away_team->flag,
+				'score' => $match->away_goals,
+			],
+		];
+		foreach ($all_pronos as $prono) {
+			$tmp['pronos'][] = [
+				'user' => $prono->user->name,
+				'home_score' => $prono->home_team_goals,
+				'away_score' => $prono->away_team_goals,
+				'booster_used' => $prono->booster_used,
+			];
+		}
+
+		$detail = [
+			'content' => view('partials.set-prono-content', ['pronos' => $tmp])->render(),
+		];
+
+		return response()->json($detail);
 	}
 }

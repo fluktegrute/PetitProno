@@ -87,7 +87,7 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-10">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
-                        <p class="bg-gray-200 text-gray-800 py-5 text-center rounded-xl mb-5">
+                        <p class="bg-gray-200 text-gray-800 py-5 text-center rounded-xl mb-5 match hover:cursor-pointer" data-match_id="{{ $match['id'] }}">
                             <span class="match-date">{{ $match['date'] }}</span>
                             <br>
                             <span class="match-stage">{{ "{$match['stage']} - {$match['group']}" }}</span>
@@ -141,4 +141,17 @@
         @endforeach
     </div>
 </x-app-layout>
+
+<!-- Modal content -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2></h2>
+            <div class="modal-title"></div>
+        </div>
+        <div class="modal-body"></div>
+    </div>
+</div>
+
 <script src="{{ asset('js/app.js') }}"></script>

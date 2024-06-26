@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Prono extends Model
 {
@@ -27,4 +28,8 @@ class Prono extends Model
     ];
 
     public $timestamps;
+
+    public function user(){
+        return $this->BelongsTo(User::Class);
+    }
 }

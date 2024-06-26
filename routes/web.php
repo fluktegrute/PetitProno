@@ -46,6 +46,8 @@ Route::middleware('auth')->group(function () {
 
     Route::post('set-prono', [PronoController::class, 'setScore'])->name('set-prono');
     Route::post('set-booster', [PronoController::class, 'setBooster'])->name('set-booster');
+
+    Route::post('get-pronos', [PronoController::class, 'getPronosForMatch'])->name('get-pronos');
 });
 
 Route::get('update-teams', [TeamsController::class, 'update'])->name('update_teams');
