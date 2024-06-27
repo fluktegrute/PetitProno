@@ -140,56 +140,6 @@ trix-editor{
 	background-color: #f5f5f5;
 }
 
-@media screen and (max-width: 640px){
-	.staging-head{
-		font-weight: 900;
-		font-size: 1rem;
-	}
-
-	.staging-table-pays{
-		width: 30%;
-	}
-
-	.staging-table-pts{
-		width: 14%;
-	}
-
-	.staging-table-th{
-		width: 8%;
-	}
-
-	.staging-table td, th{
-		font-size: 0.8em;
-	}
-
-	.staging-flag{
-		display: none;
-	}
-
-	.match-flag{
-		max-width: 25px;
-	}
-
-	.league-table > tbody > tr:nth-child(1){
-		background-color: #FFD70060;
-		height: 100px;
-		font-size: 1em;
-	}
-
-	.league-table > tbody > tr:nth-child(2){
-		background-color: #C0C0C060;
-		height: 90px;
-		font-size: 1em;
-	}
-
-	.league-table > tbody > tr:nth-child(3){
-		background-color: #CD7F3260;
-		height: 80px;
-		font-size: 1em;
-	}
-}
-
-
 .tournament-container {
   height: 100%;
   width: 100%;
@@ -406,4 +356,60 @@ trix-editor{
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+@media screen and (max-width: 640px){
+	.staging-head{
+		font-weight: 900;
+		font-size: 1rem;
+	}
+
+	.staging-table-pays{
+		width: 30%;
+	}
+
+	.staging-table-pts{
+		width: 14%;
+	}
+
+	.staging-table-th{
+		width: 8%;
+	}
+
+	.staging-table td, th{
+		font-size: 0.8em;
+	}
+
+	.staging-flag{
+		display: none;
+	}
+
+	.match-flag{
+		max-width: 25px;
+	}
+
+	.league-table > tbody > tr:nth-child(1){
+		background-color: #FFD70060;
+		height: 100px;
+		font-size: 1em;
+	}
+
+	.league-table > tbody > tr:nth-child(2){
+		background-color: #C0C0C060;
+		height: 90px;
+		font-size: 1em;
+	}
+
+	.league-table > tbody > tr:nth-child(3){
+		background-color: #CD7F3260;
+		height: 80px;
+		font-size: 1em;
+	}
+
+	/* Modal Content/Box */
+	.modal-content {
+	  padding: 10px;
+	  width: 90%; /* Could be more or less, depending on screen size */
+	}
+
 }

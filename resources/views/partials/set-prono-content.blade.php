@@ -24,6 +24,9 @@
 	@php 
 		$border = $prono['booster_used'] ? "border rounded border-indigo-300" : "";
 	@endphp
+	@if($border)
+		<span class="text-[8px] font-semibold text-indigo-400 relative top-5 left-2">Booster</span>
+	@endif
 	<div class="flex justify-center py-2 w-full {{ $border }}">
 		<div class="flex-1 text-center p-2">
 			{{ $prono['home_score'] }}
