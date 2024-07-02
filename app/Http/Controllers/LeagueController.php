@@ -35,10 +35,10 @@ class LeagueController extends Controller
 			if($creator->id == auth()->user()->id)
 				$user_is_creator = true;
 
-			$user_leagues = UserLeague::where('league_id', $id)->get();
+			$league_users = UserLeague::where('league_id', $id)->get();
 			$all_users = [];
-			foreach ($user_leagues as $user_league) {
-				$all_users[] = User::find($user_league->user_id);
+			foreach ($league_users as $league_user) {
+				$all_users[] = User::find($league_user->user_id);
 			}
 		}
 		else{
@@ -62,9 +62,12 @@ class LeagueController extends Controller
 			$league->push($tmp);
 		}
 
-		$league = $league->sortByDesc(function($item){
-			return $item['score'];
-		});
+		$league = $league->sortBy([
+			['score', 'desc'],
+			['pronos_exact', 'desc'],
+			['pronos_won', 'desc'],
+			['pronos_total', 'asc'],
+		]);
 
 		return view('league')
 			->withLeague($league)

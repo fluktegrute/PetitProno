@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class UserLeague extends Model
 {
@@ -15,4 +15,8 @@ class UserLeague extends Model
         'league_id',
         'user_id',
     ];
+
+    public function user(){
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }

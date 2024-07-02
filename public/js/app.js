@@ -91,7 +91,7 @@ jQuery('document').ready(function($){
 	}
 
 	$(".match").each(function(){
-		$(this).on('click', function(){
+		$(this).on('click tap touchstart', function(){
 			$.ajaxSetup({
 	            headers: {
 	                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
